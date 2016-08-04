@@ -9,19 +9,19 @@
 
 return array(
 
-	// The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
+    // The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
     'server' => getenv('DB_HOST'),
 
-	// The name of the database to select.
+    // The name of the database to select.
     'database' => getenv('DB_NAME'),
 
-	// The database username to connect with.
+    // The database username to connect with.
     'user' => getenv('DB_USER'),
 
-	// The database password to connect with.
+    // The database password to connect with.
     'password' => getenv('DB_PASS'),
 
-	// The prefix to use when naming tables. This can be no more than 5 characters.
-	'tablePrefix' => 'craft',
+    // The prefix to use when naming tables. This can be no more than 5 characters.
+    'tablePrefix' => 'craft',
 
 );
