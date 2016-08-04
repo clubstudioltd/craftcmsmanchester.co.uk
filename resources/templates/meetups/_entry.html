@@ -1,0 +1,84 @@
+{% extends "_layouts/master" %}
+
+{% set meetupVenue = entry.meetupVenue.first() %}
+
+{% block content %}
+    <article>
+
+        <header class="page-intro">
+            <div class="container">
+                <h1 class="page-intro__heading">{{ entry.title }}</h1>
+                <p class="page-intro__description">{{ entry.meetupShortDescription }}</p>
+            </div>
+        </header>
+
+        <div class="page-content page-content--home">
+            <div class="container">
+
+                <div class="meetup">
+                    <div class="meetup__img">
+                        <img src="{{ url('/img/venues/rise.jpeg') }}" alt="Rise Manchester">
+                    </div>
+                    <ul class="meetup-details">
+                        {% if meetupVenue|length %}
+                            <li><span class="icon ion-ios-location-outline"></span> {{ meetupVenue.title }} ({{ meetupVenue.venueAddress }}) <a href="{{ meetupVenue.venueMapUrl }}" rel="nofollow" target="_blank" class="btn btn--xs"><span class="icon ion-map"></span> View Map</a></li>
+                        {% endif %}
+                        <li><span class="icon ion-ios-calendar-outline"></span> {{ entry.meetupDate }}</li>
+                        <li><span class="icon ion-ios-clock-outline"></span> {{ entry.meetupTime }}</li>
+                    </ul>
+                    <hr class="hr hr--sm">
+                    {{ entry.meetupDescription }}
+                    <ul class="inline-btns">
+                        <li class="inline-btns__item"><a href="{{ entry.meetupComLink }}" rel="nofollow" target="_blank" class="btn btn--md btn--action">View on Meetup.com</a></li>
+                        {% if entry.meetupDocUrl|length %}
+                            <li class="inline-btns__item"><a href="{{ entry.meetupDocUrl }}" rel="nofollow" target="_blank" class="btn btn--default">View Contributions</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <section class="meetup-contents">
+                    <h2>Meetup Recap</h2>
+                    {% if entry.meetupRecap|length %}
+                        <div class="row">
+                            <div class="col-md-3">
+                                <nav>
+                                    <ul class="itinerary">
+                                        {% for recapSection in entry.meetupRecap %}
+                                            <li class="itinerary__item"><a href="#{{ recapSection.label.value }}" class="itinerary__link">{{ (recapSection.label == 'talk') ? recapSection.sectionTitle : recapSection.label.label }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-md-9">
+                                <ul class="meetup-recap">
+                                    {% for recapSection in entry.meetupRecap %}
+                                        <li id="{{ recapSection.label.value }}" class="recap-section">
+                                            <h3 class="recap-section__label">{{ recapSection.label.label }}</h3>
+                                            <h4 class="recap-section__heading">{{ recapSection.sectionTitle }}</h4>
+                                            {{ recapSection.body }}
+                                            {% if recapSection.relatedLinks|length %}
+                                                <hr class="hr hr--sm">
+                                                <h5 class="recap-section__label recap-section__label--sm">Related Links</h5>
+                                                <ul class="related-links">
+                                                    {% for relatedLink in recapSection.relatedLinks %}
+                                                        <li class="related-links__item"><a href="{{ relatedLink.linkUrl }}" class="related-links__link">{{ relatedLink.linkTitle }} &rarr;</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% elseif entry.meetupTakenPlace %}
+                        <p>The recap for this meetup isn't available yet. Please check back later.</p>
+                    {% else %}
+                        <p>This meetup hasn't taken place yet. However, a recap will appear here soon after {{ entry.meetupDate }}.</p>
+                    {% endif %}
+                </section>
+
+            </div>
+        </div>
+
+    </article>
+{% endblock %}

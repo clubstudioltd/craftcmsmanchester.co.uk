@@ -1,0 +1,11 @@
+/node_modules
+/vendor
+.env
+
+# Craft runtime and backups folders
+# ----------------------------------------------------------------------
+/app
+/config/license.key
+/storage/backups/**/*
+/storage/runtime/**/*
+/storage/userphotos/**/*

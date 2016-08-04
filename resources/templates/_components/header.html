@@ -1,0 +1,13 @@
+{% if headerHidden is not defined %}
+    <header class="site-header">
+        <div class="container">
+            <a href="{{ url() }}" class="site-logo"><strong>Craft</strong>CMS <span>Manchester</span></a>
+            <nav class="site-nav">
+                <ul class="nav-links">
+                    <li class="nav-links__item"><a href="{{ url('meetups') }}" class="nav-links__link">Browse Meetups</a></li>
+                    <li class="nav-links__item"><a href="https://www.meetup.com/craftcmsmanchester" rel="nofollow" class="nav-links__link nav-links__link--outlined">Join in @ Meetup.com</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+{% endif %}
