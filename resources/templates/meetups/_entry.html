@@ -4,17 +4,14 @@
 
 {% block content %}
     <article>
-
         <header class="page-intro">
             <div class="container">
                 <h1 class="page-intro__heading">{{ entry.title }}</h1>
                 <p class="page-intro__description">{{ entry.meetupShortDescription }}</p>
             </div>
         </header>
-
         <div class="page-content page-content--home">
             <div class="container">
-
                 <div class="meetup">
                     <div class="meetup__img">
                         <img src="{{ url('/img/venues/rise.jpeg') }}" alt="Rise Manchester">
@@ -35,7 +32,6 @@
                         {% endif %}
                     </ul>
                 </div>
-
                 <section class="meetup-contents">
                     <h2>Meetup Recap</h2>
                     {% if entry.meetupRecap|length %}
@@ -76,9 +72,7 @@
                         <p>This meetup hasn't taken place yet. However, a recap will appear here soon after {{ entry.meetupDate }}.</p>
                     {% endif %}
                 </section>
-
             </div>
         </div>
-
     </article>
 {% endblock %}

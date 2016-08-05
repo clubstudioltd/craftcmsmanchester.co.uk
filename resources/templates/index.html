@@ -1,20 +1,19 @@
 {% extends "_layouts/master" %}
 
 {% set headerHidden = true %}
+
 {% set currentVenue = generalSettings.meetupVenue.first() %}
 {% set nextMeetup = entry.nextMeetup.first() %}
 {% set previousMeetups = craft.entries.section('meetups').search('meetupTakenPlace:1') %}
 
 {% block content %}
     <article>
-
         <header class="page-intro page-intro--home">
             <div class="container">
                 <h1 class="page-intro__heading">Craft CMS Manchester</h1>
                 <p class="page-intro__description">A bi-monthly Craft CMS Meetup {{ (currentVenue|length) ? 'at ' ~ currentVenue.title : 'in Manchester' }}.</p>
             </div>
         </header>
-
         <div class="page-content page-content--home">
             <div class="container">
 
@@ -52,20 +51,8 @@
                         <h2 class="section-label">Previous Meetups</h2>
                         <ul class="meetups-list">
                             {% for meetup in previousMeetups %}
-                                {% set meetupVenue = meetup.meetupVenue.first() %}
                                 <li class="meetups-list__item">
-                                    <div class="meetup-preview">
-                                        <h3 class="meetup-preview__heading">{{ meetup.title }}</h3>
-                                        <p class="meetup-preview__description">{{ meetup.meetupShortDescription }}</p>
-                                        <hr class="hr hr--sm">
-                                        <ul class="meetup-details">
-                                            <li><span class="icon ion-ios-calendar-outline"></span> {{ meetup.meetupDate }}</li>
-                                            {% if meetupVenue|length %}
-                                                <li><span class="icon ion-ios-location-outline"></span> {{ meetupVenue.title }}</li>
-                                            {% endif %}
-                                        </ul>
-                                        <a href="{{ meetup.url }}" class="btn btn--sm btn--default">Read the recap &rarr;</a>
-                                    </div>
+                                    {% include 'meetups/_components/meetup-preview' ignore missing with { meetup: meetup } only %}
                                 </li>
                             {% endfor %}
                         </ul>
