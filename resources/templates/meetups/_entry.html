@@ -40,7 +40,7 @@
                                 <nav>
                                     <ul class="itinerary">
                                         {% for recapSection in entry.meetupRecap %}
-                                            <li class="itinerary__item"><a href="#{{ recapSection.label.value }}" class="itinerary__link">{{ (recapSection.label == 'talk') ? recapSection.sectionTitle : recapSection.label.label }}</a></li>
+                                            <li class="itinerary__item"><a href="#{{ recapSection.label.value }}" class="itinerary__link">{{ (recapSection.label == 'talk' or recapSection.label == 'snippet') ? recapSection.sectionTitle : recapSection.label.label }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </nav>
