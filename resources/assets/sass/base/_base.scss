@@ -273,11 +273,12 @@ a {
 
   h4 {
     margin-bottom: 0;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 500;
 
     & + p {
       margin-top: 0;
+      font-size: .875rem;
     }
   }
 
@@ -329,7 +330,7 @@ a {
       }
 
       @media #{$large-up} {
-        width: 140%;
+        width: 145%;
         margin-left: -20%;
       }
     }
