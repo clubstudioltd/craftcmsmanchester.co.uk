@@ -48,10 +48,10 @@ return array(
      * -------------------------------------------------------------------------- */
 
     '.co.uk' => array(
-        'siteUrl' => 'http://craftcmsmanchester.co.uk',
+        'siteUrl' => 'https://craftcmsmanchester.co.uk',
         'environmentVariables' => array(
             'basePath' => '/home/forge/craftcmsmanchester.co.uk/public/',
-            'baseUrl' => 'http://craftcmsmanchester.co.uk/',
+            'baseUrl' => 'https://craftcmsmanchester.co.uk/',
         )
     )
 
