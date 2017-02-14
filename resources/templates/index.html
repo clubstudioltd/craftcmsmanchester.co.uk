@@ -37,7 +37,13 @@
                                 <li><span class="icon ion-ios-clock-outline"></span> {{ nextMeetup.meetupTime }}</li>
                             </ul>
                             <ul class="inline-btns">
-                                <li class="inline-btns__item"><a href="{{ nextMeetup.meetupComLink }}" rel="nofollow" target="_blank" class="btn btn--md btn--action">RSVP on Meetup.com</a></li>
+                                <li class="inline-btns__item">
+                                    {% if nextMeetup.meetupComLink|length %}
+                                        <a href="{{ nextMeetup.meetupComLink }}" rel="nofollow" target="_blank" class="btn btn--md btn--action">RSVP on Meetup.com</a>
+                                    {% else %}
+                                        <a href="https://www.meetup.com/craftcmsmanchester" rel="nofollow" target="_blank" class="btn btn--md btn--action">Join on Meetup.com</a>
+                                    {% endif %}
+                                </li>
                                 {% if nextMeetup.meetupDocUrl|length %}
                                     <li class="inline-btns__item"><a href="{{ nextMeetup.meetupDocUrl }}" rel="nofollow" target="_blank" class="btn btn--default">Contribute</a></li>
                                 {% endif %}
