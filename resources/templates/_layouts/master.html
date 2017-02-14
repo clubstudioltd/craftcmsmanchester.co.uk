@@ -3,25 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>
-            {%- if pageTitle is defined -%}
-                {{ pageTitle }}
-            {%- elseif entry.metaPageTitle is defined and entry.metaPageTitle is not empty -%}
-                {{ entry.metaPageTitle }}
-            {%- else -%}
-                {{ defaultMetaData.metaPageTitle }}
-            {%- endif -%}
-        </title>
-        <meta name="description" content="
-            {%- if pageDescription is defined -%}
-                {{ pageDescription }}
-            {%- elseif entry.metaPageDescription is defined and entry.metaPageDescription is not empty -%}
-                {{ entry.metaPageDescription }}
-            {%- else -%}
-                {{ defaultMetaData.metaPageDescription }}
-            {%- endif -%}
-        ">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% hook 'seomaticRender' %}
         <link rel="apple-touch-icon" href="{{ url('apple-touch-icon.png') }}">
         <link rel="stylesheet" href="{{ url('css/main.css') }}">
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
